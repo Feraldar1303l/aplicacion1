@@ -8,114 +8,130 @@ class BotonesPage extends StatefulWidget {
 }
 
 class _BotonesPageState extends State<BotonesPage> {
-  String _mensaje = '';
-  TextStyle estiloTexto = TextStyle(fontSize: 20, fontWeight: FontWeight.bold);
-
+  String _opcion1;
+  String _opcion2;
+  String _opcion3;
+  String _opcion4;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tipo de Botones: Soto Zepeda Carlos Fernando'),
+        title: Text('Tipo de botones '),
       ),
       body: Center(
         child: Column(
           children: <Widget>[
-            Divider(),
+            SizedBox(
+              height: 8.0,
+            ),
             Container(
               width: 250.0,
-              height: 85.0,
+              height: 100.0,
               decoration: BoxDecoration(
-                  border:
-                      Border.all(color: Colors.blue, style: BorderStyle.solid)),
+                border:
+                    Border.all(color: Colors.blue, style: BorderStyle.solid),
+              ),
               child: RaisedButton(
-                color: Colors.blue.shade400,
-                textColor: Colors.white70,
-                onPressed: () {
-                  _botonRasen();
-                },
-                child: Text('RasenButton'),
-              ),
+                  color: Colors.blue,
+                  textColor: Colors.white,
+                  onPressed: () => {
+                        setState(() {
+                          _opcion1 = 'presiono  RaisedButton';
+                        }),
+                      },
+                  child: Text('RaisedButton')),
             ),
-            Divider(),
+            SizedBox(
+              height: 15.0,
+            ),
             Container(
               width: 250.0,
-              height: 85.0,
+              height: 100.0,
               decoration: BoxDecoration(
-                  border:
-                      Border.all(color: Colors.blue, style: BorderStyle.solid)),
+                border:
+                    Border.all(color: Colors.blue, style: BorderStyle.solid),
+              ),
               child: FlatButton(
-                onPressed: () {
-                  _botonFlat();
-                },
                 child: Text('FlatButton'),
+                onPressed: () => {
+                  setState(() {
+                    _opcion2 = 'presiono FlatButton';
+                  }),
+                },
               ),
             ),
-            Divider(),
+            SizedBox(
+              height: 15.0,
+            ),
             Container(
               width: 250.0,
-              height: 85.0,
+              height: 100.0,
               decoration: BoxDecoration(
-                  border:
-                      Border.all(color: Colors.blue, style: BorderStyle.solid)),
+                border:
+                    Border.all(color: Colors.blue, style: BorderStyle.solid),
+              ),
               child: IconButton(
-                onPressed: () {
-                  _botonIcon();
+                icon: Icon(Icons.delete),
+                onPressed: () => {
+                  setState(() {
+                    //Accion del icon button cuando lo presionas
+                    _opcion3 = 'presiono IconButton';
+                  }),
                 },
-                icon: Icon(Icons.android),
-                iconSize: 85.0,
-                color: Colors.lightGreen,
+                color: Colors.blue,
+                iconSize: 45.0,
               ),
             ),
-            Divider(),
+            SizedBox(height: 15.0),
             Container(
               width: 250.0,
               height: 50.0,
-              /*decoration: BoxDecoration(
-                  border:
-                      Border.all(color: Colors.blue, style: BorderStyle.solid)),*/
               child: OutlineButton(
-                onPressed: () {
-                  _botonOut();
-                },
-                textColor: Colors.lightBlue.shade900,
-                color: Colors.blueAccent.shade50,
+                color: Colors.blue,
+                child: Text('OutlineButton'),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(55.00)),
-                borderSide: BorderSide(color: Colors.lightBlue.shade800),
-                child: Text('OutLineButton'),
+                    borderRadius: BorderRadius.circular(25)),
+                borderSide: BorderSide(color: Colors.blue),
+                onPressed: () => {
+                  setState(() {
+                    //Accion que hace cuando lo presionas
+                    _opcion4 = 'presiono  OutlineButton';
+                  }),
+                },
               ),
             ),
-            Divider(),
+            SizedBox(
+              height: 10.0,
+            ),
             Container(
-              child: Text(_mensaje, style: estiloTexto),
+              //Los mensajes que estan en null
+              width: 300,
+              child: Text('Mensaje: $_opcion1'),
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            Container(
+              width: 300,
+              child: Text('Mensaje: $_opcion2'),
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            Container(
+              width: 300,
+              child: Text('Mensaje: $_opcion3'),
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            Container(
+              width: 300,
+              child: Text('Mensaje: $_opcion4'),
             ),
           ],
         ),
       ),
     );
-  }
-
-  void _botonRasen() {
-    setState(() {
-      _mensaje = 'Presionaste RasenButton';
-    });
-  }
-
-  void _botonFlat() {
-    setState(() {
-      _mensaje = 'Presionaste FlatButton';
-    });
-  }
-
-  void _botonIcon() {
-    setState(() {
-      _mensaje = 'Presionaste IconButton';
-    });
-  }
-
-  void _botonOut() {
-    setState(() {
-      _mensaje = 'Presionaste OutLineButton';
-    });
   }
 }
